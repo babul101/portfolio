@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import BaseLayout from '../components/layouts/BaseLayout';
 import BasePage from '../components/BasePage';
 import withAuth from '../components/hoc/withAuth';
-import {getSecretData} from '../actions';
+import {getSecretData,getSecretDataServer} from '../actions';
 
 class Secret extends Component {
 
-    static getInitialProps() {
-        const superSecretValue = 'Super Secret Value';
-        return {superSecretValue};
+    static async getInitialProps({req}) {
+        // const superSecretValue = 'Super Secret Value';
+        // return {superSecretValue};
+        const anotherSecretData =  await getSecretData(req);
+        // console.log(anotherSecretData);
+        return {anotherSecretData};
+        
         
     }
 
@@ -64,4 +68,4 @@ class Secret extends Component {
   }
 }
 
-export default withAuth(Secret);
+export default withAuth()(Secret);
