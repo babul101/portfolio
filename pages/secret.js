@@ -55,7 +55,7 @@ class Secret extends Component {
 
   render() {
       const {superSecretValue} = this.props;
-      console.log = this.state;
+      // console.log = this.state;
     return (
         <BaseLayout {...this.props.auth}>
                     <BasePage>
