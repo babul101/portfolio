@@ -4,6 +4,7 @@ import BasePage from '../components/BasePage';
 import withAuth from '../components/hoc/withAuth';
 import PortfolioCreateForm from '../components/portfolios/PortfolioCreateForm';
 import {Row,Col} from 'reactstrap';
+import {createPortfolio} from '../actions';
 
 class PortfolioNew extends Component {
 
@@ -13,7 +14,10 @@ class PortfolioNew extends Component {
   }
 
   savePortfolio(portfolioData) {
-    alert(JSON.stringify(portfolioData, null, 2));
+    createPortfolio(portfolioData).then((portfolio) => {
+      console.log(portfolio)
+    })
+    .catch((err)=>{console.error(err)})
   }
   render() {
     return (
