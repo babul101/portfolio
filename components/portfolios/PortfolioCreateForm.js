@@ -1,7 +1,7 @@
 // Render Prop
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
-import { Button } from 'reactstrap';
+import { Button,Alert } from 'reactstrap';
 import PortInput from '../form/PortInput';
 import PortDate from '../form/PortDate';
 
@@ -52,6 +52,11 @@ const PortfolioCreateForm = (props) => (
           <Button color='success' size='lg' type="submit" disabled={isSubmitting}>
             Create
           </Button>
+          { props.error &&
+              <Alert color='danger'>
+                {props.error}
+              </Alert>
+          }
         </Form>
       )}
     </Formik>
