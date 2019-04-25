@@ -4,6 +4,7 @@ import { Formik, Form, Field } from 'formik';
 import { Button,Alert } from 'reactstrap';
 import PortInput from '../form/PortInput';
 import PortDate from '../form/PortDate';
+import moment from 'moment';
 
 const validateInputs = (values) => {
     let errors = {};
@@ -13,8 +14,8 @@ const validateInputs = (values) => {
     }
    });
 
-   const startDate = values.startDate;
-   const endDate = values.endDate;
+   const startDate = moment(values.startDate);
+   const endDate = moment(values.endDate);
 
    if(startDate && endDate && endDate.isBefore(startDate)) {
      errors.endDate = 'End Date cannot be before Start Date!!'
@@ -22,15 +23,15 @@ const validateInputs = (values) => {
     return errors;
   }
 
-  const INITIAL_VALUES = {title:'',company:'',location:'',position:'',description:'',startDate:'',endDate:''};
+  
 
-const PortfolioCreateForm = (props) => (
+const PortfolioCreateForm = ({initialValues,onSubmit,error}) => (
   <div>
     
     <Formik
-      initialValues={ INITIAL_VALUES }
+      initialValues={ initialValues }
       validate={validateInputs}
-      onSubmit={props.onSubmit}
+      onSubmit={onSubmit}
     >
       {({ isSubmitting }) => (
         <Form>
@@ -45,16 +46,16 @@ const PortfolioCreateForm = (props) => (
                   
           <Field  type="textarea" name="description" label='Description' component={PortInput} />
           
-          <Field  name="startDate" label='Start Date' component={PortDate} />
+          <Field  name="startDate" label='Start Date' initialDate={initialValues.startDate} component={PortDate} />
           
-          <Field  name="endDate" label='End Date' canBeDisabled={true} component={PortDate} />
+          <Field  name="endDate" label='End Date' initialDate={initialValues.endDate} canBeDisabled={true} component={PortDate} />
           
           <Button color='success' size='lg' type="submit" disabled={isSubmitting}>
             Create
           </Button>
-          { props.error &&
+          { error &&
               <Alert color='danger'>
-                {props.error}
+                {error}
               </Alert>
           }
         </Form>
