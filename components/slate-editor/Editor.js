@@ -1,45 +1,10 @@
 import React from 'react';
 import HoverMenu from './HoverMenu';
 import { Editor } from 'slate-react';
-import { Value } from 'slate';
-import {renderMark} from './renderers';
+import {initialValue} from './initial-value';
+import {renderMark,renderNode} from './renderers';
 
 
-// Create our initial value...
-const initialValue = Value.fromJSON({
-    document: {
-      nodes: [
-        {
-          object: 'block',
-          type: 'paragraph',
-          nodes: [
-            {
-              object: 'text',
-              leaves: [
-                {
-                  text: 'A line of text in a paragraph.',
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-  });
-
-  // Define a React component renderer for our code blocks.
-function CodeNode(props) {
-    return (
-      <pre {...props.attributes}>
-        <code>{props.children}</code>
-      </pre>
-    )
-  }
-
-  function BoldMark(props) {
-    return <strong>{props.children}</strong>
-  }
- 
 export default class SlateEditor extends React.Component {
     // Set the initial value when the app is first constructed.
     state = {
@@ -96,6 +61,7 @@ export default class SlateEditor extends React.Component {
          value={this.state.value}
          onChange={this.onChange} 
          renderMark={renderMark}
+         renderNode={renderNode}
          renderEditor={this.renderEditor}
          />
        }
