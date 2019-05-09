@@ -5,9 +5,9 @@ const ControlMenu = (props) => {
         <div className="control-menu">
             <h1 className='title'>Write Your Story...</h1>
             <div className="status-box">
-                Saved
+                {props.isLoading ? 'Saving....' : 'Saved'}
             </div>
-            <Button color='success'>Save</Button>
+            <Button disabled={props.isLoading} onClick={props.save} color='success'>Save</Button>
         </div>
     )
 }
