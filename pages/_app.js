@@ -1,8 +1,12 @@
 import React from 'react';
 import App,{Container} from 'next/app';
+import { ToastContainer} from 'react-toastify';
 import auth0 from '../services/auth0';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/main.scss';
+import 'react-toastify/dist/ReactToastify.css';
+
 const namespace = 'http://localhost:3000';
 
 export default class MyApp extends App {
@@ -24,6 +28,7 @@ export default class MyApp extends App {
         const {Component,pageProps,auth} = this.props;
         return (
             <Container>
+                <ToastContainer/>
                 <Component {...pageProps} auth={auth} />
             </Container>
         )
