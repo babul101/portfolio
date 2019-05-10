@@ -3,8 +3,9 @@ import BaseLayout from '../components/layouts/BaseLayout';
 import BasePage from '../components/BasePage';
 import withAuth from '../components/hoc/withAuth';
 import {Container,Row,Col} from 'reactstrap';
-import {getUserBlogs} from '../actions';
-import {Link} from '../routes';
+import PortButtonDropdown from '../components/ButtonDropdown';
+import {getUserBlogs,updateBlog} from '../actions';
+import {Link,Router} from '../routes';
 
  class UserBlogs extends Component {
 
@@ -19,6 +20,19 @@ import {Link} from '../routes';
     return {blogs};
   }
 
+  changeBlogStatus(status,blogId) {
+    updateBlog({status},blogId).then(()=> {
+      Router.pushRoute('/userBlogs');
+    }).catch(err => {
+      console.error(err.message)
+    })
+  }
+
+  deleteBlog() {
+    alert('Deleting blog');
+  }
+
+
   seperateBlogs(blogs) {
     const published = [];
     const drafts = [];
@@ -29,6 +43,18 @@ import {Link} from '../routes';
     return {published,drafts};
   }
 
+  createStatus(status) {
+    return status === 'draft' ? {view:'Publish Story',value:'published'} : {view:'Make a Draft',value:'draft'};
+  }
+
+  dropdownOptions = (blog) => {
+    const status = this.createStatus(blog.status);
+    return [
+      {text:status.view,handlers:{onClick: ()=> this.changeBlogStatus(status.value,blog._id)}},
+      {text:'Delete',handlers:{onClick:()=> this.deleteBlog()}}
+    ]
+  }
+
   renderBlogs(blogs) {
     return (
       <ul className='user-blogs-list'>
@@ -37,7 +63,9 @@ import {Link} from '../routes';
             <li key={index}>
               <Link route={`/blogs/${blog._id}/edit`}>
                 <a>{blog.title}</a>
+                
               </Link>
+              <PortButtonDropdown items ={this.dropdownOptions(blog)} />
             </li>
           ))
         }
