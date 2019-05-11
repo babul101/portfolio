@@ -14,6 +14,15 @@ exports.getBlogs = (req,res) => {
     });
 }
 
+exports.getBlogBySlug = (req,res) => {
+    const slug = req.params.slug;
+    Blog.findOne({slug},function(err,foundBlog){
+        if(err) {
+            return res.status(422).send(err);
+        }
+        return res.json(foundBlog);
+    });
+}
 
 exports.getBlogById = (req,res) => {
     const blogId = req.params.id;
