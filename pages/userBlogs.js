@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import BaseLayout from '../components/layouts/BaseLayout';
 import BasePage from '../components/BasePage';
 import withAuth from '../components/hoc/withAuth';
-import {Container,Row,Col} from 'reactstrap';
+import {Container,Row,Col,Button} from 'reactstrap';
 import PortButtonDropdown from '../components/ButtonDropdown';
 import {getUserBlogs,updateBlog,deleteBlog} from '../actions';
 import {Link,Router} from '../routes';
@@ -93,14 +93,19 @@ import {Link,Router} from '../routes';
             <div className="row">
               <div className="col-lg-8 col-md-10 mx-auto">
                 <div className="site-heading">
-                  <h1>Fresh Blogs</h1>
-                  <span className="subheading">Programming, travelling...</span>
+                  <h1>Blogs Dashboard</h1>
+                  <span className="subheading">Let's write some blogs today {' '}
+                    <Link route='/blogs/new'>
+                      <Button color='primary'>Create a new Blog</Button>
+                    </Link>
+                  </span>
                 </div>
               </div>
             </div>
           </Container>
         </div>
         <BasePage className="blog-user-page">
+        
           <Row>
             <Col md='6' className='mx-auto text-center'>
             <h2 className='blog-status-title'>Published Blogs</h2>
