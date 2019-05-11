@@ -102,7 +102,7 @@ class Blogs extends Component {
                 </a>
               </li>
             </ul>
-            <p className="copyright text-muted">Copyright &copy; Filip Jerga 2018</p>
+            <p className="copyright text-muted">Copyright &copy; Babul Deb <span>{moment().format('YYYY')}</span></p>
           </div>
         </Row>
       </Container>
