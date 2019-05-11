@@ -4,7 +4,7 @@ import BasePage from '../components/BasePage';
 import withAuth from '../components/hoc/withAuth';
 import {Container,Row,Col} from 'reactstrap';
 import PortButtonDropdown from '../components/ButtonDropdown';
-import {getUserBlogs,updateBlog} from '../actions';
+import {getUserBlogs,updateBlog,deleteBlog} from '../actions';
 import {Link,Router} from '../routes';
 
  class UserBlogs extends Component {
@@ -15,7 +15,7 @@ import {Link,Router} from '../routes';
     try {
       blogs = await getUserBlogs(req);
     } catch (err) {
-      console.errror(err)
+      console.error(err)
     }
     return {blogs};
   }
@@ -28,8 +28,17 @@ import {Link,Router} from '../routes';
     })
   }
 
-  deleteBlog() {
-    alert('Deleting blog');
+  deleteBlogWarning(blogId) {
+    const res = confirm('Are you sure you want to delete this blog?');
+    if(res) {
+      this.deleteBlog(blogId);
+    }
+  }
+
+  deleteBlog(blogId) {
+    deleteBlog(blogId).then(status => {
+      Router.pushRoute('/userBlogs');
+    }).catch(err => console.error(err.message));
   }
 
 
@@ -51,7 +60,7 @@ import {Link,Router} from '../routes';
     const status = this.createStatus(blog.status);
     return [
       {text:status.view,handlers:{onClick: ()=> this.changeBlogStatus(status.value,blog._id)}},
-      {text:'Delete',handlers:{onClick:()=> this.deleteBlog()}}
+      {text:'Delete',handlers:{onClick:()=> this.deleteBlogWarning(blog._id)}}
     ]
   }
 
