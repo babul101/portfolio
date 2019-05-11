@@ -7,3 +7,11 @@ export const getCookieFromReq = (req,cookieKey) => {
         if(!cookie) {return undefined};
         return cookie.split('=')[1];
 }
+
+export const shortenText = (text,maxlength=124) => {
+    if(text && text.length > maxlength){
+      return `${text,substring(0,maxlength)} ...`
+    }
+    return text;
+  }
+  
