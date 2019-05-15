@@ -20,7 +20,7 @@ class Index extends Component  {
       this.animateCard();
     }
 
-    componentWillLeave() {
+    componentWillUnmount() {
       this.cardAnimationInterval && clearInterval(this.cardAnimationInterval);
     }
 
