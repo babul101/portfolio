@@ -4,10 +4,12 @@
   "description": "Getting explored by people",
   "main": "index.js",
   "scripts": {
+    
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node server/index.js",
     "build": "next build",
     "start": "NODE_ENV=production node server/index.js"
+    
   },
   "author": "Babul",
   "license": "MIT",
@@ -44,4 +46,5 @@
     "slate-react": "^0.21.12",
     "slugify": "^1.3.3"
   }
+ 
 }

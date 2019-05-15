@@ -29,7 +29,7 @@ class Index extends Component  {
         this.setState({
           isFlipping : !this.state.isFlipping
         })
-      },3000)
+      },9000)
     }
   render() {
     const {isAuthenticated,user} = this.props.auth;
