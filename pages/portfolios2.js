@@ -6,7 +6,7 @@ import PortfolioCard from '../components/portfolios/PortfolioCard';
 import {getPortfolios,deletePortfolio} from '../actions';
 import {Router} from '../routes';
 
-class Portfolios extends Component {
+class Portfolios2 extends Component {
 
   static async getInitialProps() {
   
@@ -73,7 +73,7 @@ class Portfolios extends Component {
     const {portfolios} = this.props;
     const {isAuthenticated,isSiteOwner} = this.props.auth;
     return (
-      <BaseLayout title='Babul Deb - Projects' {...this.props.auth}>
+      <BaseLayout cannonical='/portfolios' title='Babul Deb - Projects' {...this.props.auth}>
         <BasePage className='portfolio-page' title='Portfolios'>
         { isAuthenticated && isSiteOwner &&
         <Button onClick={()=>Router.pushRoute('/portfolios/new')} color='success' className='create-port-btn'>Create Portfolio
@@ -88,4 +88,4 @@ class Portfolios extends Component {
   }
 }
 
-export default Portfolios;
+export default Portfolios2;
