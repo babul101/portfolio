@@ -4,12 +4,14 @@ import jwt from 'jsonwebtoken';
 import axios from 'axios';
 import {getCookieFromReq} from '../helpers/utils';
 
+const CLIENT_ID = process.env.CLIENT_ID;
+
 class Auth0 {
     constructor() {
        this.auth0 = new auth0.WebAuth({
             domain: 'babul.auth0.com',
-            clientID: 'B5CzA3jaSJe524yr3QBQU80muz6TGjGU',
-            redirectUri: 'http://localhost:3000/callback',
+            clientID: CLIENT_ID,
+            redirectUri: `${process.env.BASE_URL}/callback`,
             responseType: 'token id_token',
             scope: 'openid profile'
           });
@@ -44,21 +46,19 @@ class Auth0 {
         // this.accessToken = authResult.accessToken;
         // this.idToken = authResult.idToken;
         // this.expiresAt = expiresAt;
-        Cookies.set('user',authResult.idTokenPayload);
+       
         Cookies.set('jwt',authResult.idToken);
-        Cookies.set('expiresAt',expiresAt);
+      
     
        
       }
 
       logout() {
-          Cookies.remove('user');
+          
           Cookies.remove('jwt');
-          Cookies.remove('expiresAt');
-
           this.auth0.logout({
               returnTo:'',
-              clientID:'B5CzA3jaSJe524yr3QBQU80muz6TGjGU'
+              clientID:CLIENT_ID
           })
       }
 
