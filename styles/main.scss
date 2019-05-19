@@ -1,4 +1,4 @@
-@import './shared/fonts';
+
 @import './shared/colors';
 @import './shared/mixins';
 @import './index';
@@ -9,18 +9,13 @@
 @import './header';
 @import './slate-editor';
 
-.montserrat-loaded {
-  html,body {
-    font-family: 'Montserrat', 'Helvetica';
-  }
-}
+
 
 html, body {
     height:100%;
     width:100%;
-    font-family: 'Helvetica';
-  }
-  
+    font-family: 'Montserrat', 'Helvetica';
+}
   .clickable {
     cursor: pointer;
   }
