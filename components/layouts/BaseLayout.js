@@ -3,8 +3,9 @@ import Header from "../shared/Header";
 import Head from 'next/head';
 
 const BaseLayout = (props) => {
-    const {className,children,isAuthenticated,isSiteOwner,title,cannonical} = props;
+    const {className,children,isAuthenticated,isSiteOwner,cannonical} = props;
     const headerType = props.headerType || 'default';
+    const title = props.title || 'Babul Deb'
   return (
     <React.Fragment>
     <Head>
