@@ -11,8 +11,8 @@ import {Row,Col} from 'reactstrap';
         <Row className="mt-5">
           <Col md="6">
             <div className="left-side">
-              <h1 className="title fadein">Hello, Welcome</h1>
-              <h4 className="subtitle fadein">To About Page</h4>
+              <h1 className="title fadein"> Welcome Folks</h1>
+              {/* <h4 className="subtitle fadein">To About Page</h4> */}
               <p className="subsubTitle fadein">Feel free to read short description about me.</p>
             </div>
           </Col>

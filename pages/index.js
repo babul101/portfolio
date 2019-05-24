@@ -35,15 +35,17 @@ class Index extends Component  {
     const {isAuthenticated,user} = this.props.auth;
     const {isFlipping} = this.state;
     return (
+        
         <BaseLayout className={`cover ${isFlipping ? 'cover-1' : 'cover-0'}`} {...this.props.auth} headerType='index' title='Babul Deb - Portfolio'>
+        
         <div className="main-section">
-          {/* <div className="background-image">
-            <img src="/static/images/background-index.png"  />
-          </div> */}
-      
+           
+          
           <Container>
+          
             <Row>
               <Col md="6">
+              
                 <div className="hero-section">
                   <div className={`flipper ${isFlipping ? 'isFlipping' : ''}`}>
                     <div className="front">
@@ -53,7 +55,7 @@ class Index extends Component  {
                           Have a look at my portfolio and job history.
                         </div>
                       </div>
-                      <img className="image" src="/static/images/section-1.png" alt='Picture of a Coder'/>
+                      <img className="image" src="/static/images/a.jpg" alt='Picture of a Coder'/>
                       <div className="shadow-custom">
                         <div className="shadow-inner"> </div>
                       </div>
@@ -65,7 +67,7 @@ class Index extends Component  {
                           Building top notch quality experiences.
                         </div>
                       </div>
-                      <img className="image" src="/static/images/section-2.png" alt='Picture of a Coder'/>
+                      <img className="image" src="/static/images/apple.jpg" alt='Picture of a Coder'/>
                       <div className="shadow-custom shadow-custom-2">
                         <div className="shadow-inner"> </div>
                       </div>
@@ -100,8 +102,10 @@ class Index extends Component  {
                 </div>
               </Col>
             </Row>
+            
           </Container>
         </div>
+        
       </BaseLayout>
       
     )

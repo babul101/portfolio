@@ -33,7 +33,9 @@ export default class MyApp extends App {
         const {Component,pageProps,auth} = this.props;
         return (
             <Container>
+                
                 <ToastContainer/>
+                
                 <Component {...pageProps} auth={auth} />
             </Container>
         )
